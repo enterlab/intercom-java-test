@@ -14,7 +14,7 @@
   	<dependency>
   		<groupId>io.intercom</groupId>
   		<artifactId>intercom-java</artifactId>
-  		<version>0.0.3</version>
+  		<version>0.0.4</version>
   	</dependency>
   </dependencies>
 </project>
