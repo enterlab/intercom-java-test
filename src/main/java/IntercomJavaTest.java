@@ -4,6 +4,7 @@ import java.util.Map;
 
 import io.intercom.api.Company;
 import io.intercom.api.CustomAttribute;
+import io.intercom.api.Event;
 import io.intercom.api.Intercom;
 import io.intercom.api.Tag;
 import io.intercom.api.User;
@@ -15,6 +16,10 @@ public class IntercomJavaTest {
 	public static void main(String[] args) {
 		Intercom.setAppID("drlbmz91");
 		Intercom.setApiKey("f93795bbd9c4f3e6ecdff556d4e5e8ba3679dd87");
+
+//		User user = new User();
+//		user.setEmail("crap@meew.ee");
+//		User.create(user);
 		
 //		Company company = new Company();
 //	    company.setName("Blue Sun");
@@ -31,23 +36,36 @@ public class IntercomJavaTest {
 	    
 	    System.out.println(company2);
 	    */
-		
-	    Map<String, String> params = new HashMap<String, String>();
+
+		Map<String, String> params = new HashMap<String, String>();
 	    params.put("email", "henrik@meew.ee");
 	    User user = User.find(params);
-	    
+
+		/*	    
 	    System.out.println(user);
 	    
-//	    user.addCompany(company2);
-//	    User.update(user);
-	    
+	    user.addCompany(company2);
+	    User.update(user);
+
+*/
+		// TAGS
 	    Tag tag = new Tag().setName("henriktest");
 	    tag = Tag.create(tag);
 	    
 	    final ArrayList<User> users = new ArrayList<User>();
 	    users.add(user);
-	    Tag.tag(tag, new UserCollection(users));
-	        
+	    Tag.tag(tag, user);
+	    
+	    System.out.println(user.getTagCollection());
+	    
+	    /*
+	    Event event = new Event().setEventName("bought-hat")
+	    	    .setUserID(user.getUserId())
+	    	    .putMetadata("invitee_email", "jayne@serenity.io")
+	    	    .putMetadata("found_date", System.currentTimeMillis())
+	    	    .putMetadata("new_signup", true);
+	    	Event.create(event);
+	      */  
 	}
 
 }
